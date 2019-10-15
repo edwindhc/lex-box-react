@@ -32,7 +32,7 @@ export default class PanelCategory extends Component {
     }
     async getCategories(perPage = this.state.perPage, page = this.state.page) {
         this.setState({ perPage, page })
-        const categories = await axios.get(`${process.env.API_APP}/categories?perPage=${perPage}&page=${page}`);
+        const categories = await axios.get(`/categories?perPage=${perPage}&page=${page}`);
         this.setState({ categories: categories.data.rows, count: categories.data.count })
         this.props.getCategories(perPage = this.state.perPage, page = this.state.page)
     }
@@ -43,7 +43,7 @@ export default class PanelCategory extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
     async addCategory() {
-        const category = await axios.post(`${process.env.API_APP}/categories/`, { name: this.state.name })
+        const category = await axios.post(`/categories/`, { name: this.state.name })
         if (category.status === 200) {
             this.setState({ success: true, show: false })
             setTimeout(() => this.setState({ success: false, name: '' }), 3000);

@@ -23,7 +23,7 @@ export default class ProductDetail extends Component {
     }
 
     async getCategory() {
-        const categories = await axios.get(`${process.env.API_APP}/categories`)
+        const categories = await axios.get(`/categories`)
         this.setState({ categories: categories.data.rows, count: categories.data.count })
     }
 
@@ -34,14 +34,14 @@ export default class ProductDetail extends Component {
     async toggleNested(id) {
         this.setState({ nestedModal: !this.state.nestedModal })
         if (id) {
-            let category = await axios.get(`${process.env.API_APP}/categories/${id}`)
+            let category = await axios.get(`/categories/${id}`)
             this.setState({ category: category.data })
         }
     }
 
     async updateCategory(e) {
         this.toggleNested();
-        const update = await axios.patch(`${process.env.API_APP}/categories/${this.state.category.id}`, { name: this.state.name })
+        const update = await axios.patch(`/categories/${this.state.category.id}`, { name: this.state.name })
         if (update.status === 200) {
             this.successfull();
             this.getCategory()
@@ -64,7 +64,7 @@ export default class ProductDetail extends Component {
         this.setState({ drop: true, id })
     }
     async confirmDropCategory(id) {
-        const drop = await axios.delete(`${process.env.API_APP}/categories/${this.state.id}`)
+        const drop = await axios.delete(`/categories/${this.state.id}`)
         if (drop.status === 200) {
             this.setState({ drop: false, success: true, modal: false })
             setTimeout(() => this.setState({ drop: false }), 3000);
