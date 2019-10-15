@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.logo svg {
+    fill: currentColor;
+    height: 35px;
+    color: white;
+}
+
+.bg-default {
+    background-color: #3a94b9 !important;
+}
