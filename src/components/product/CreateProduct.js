@@ -98,7 +98,7 @@ export default class CreateProduct extends Component {
                                 <Input type="select" name="category" id="category" value={this.state.category}
                                     onChange={(e) => { this.handleChange(e) }}>
                                     <option value={0}>Seleccionar</option>
-                                    {categories ? categories.map((c, key) => <option value={c.id} key={key}>{c.name}</option>
+                                    {categories.length ? categories.map((c, key) => <option value={c.id} key={key}>{c.name}</option>
                                     ) : ''}
                                 </Input>
                             </FormGroup>

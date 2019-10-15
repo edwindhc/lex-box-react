@@ -31,13 +31,15 @@ export class Paginator extends Component {
                                 </PaginationItem>
 
                                 {
-                                    num.map(v => (
-                                        <PaginationItem key={v} active={v === this.props.page} onClick={() => this.props.paginate(this.props.perPage, v)}>
-                                            <PaginationLink>
-                                                {v}
-                                            </PaginationLink>
-                                        </PaginationItem>
-                                    ))
+                                    num.length ? (
+                                        num.map(v => (
+                                            <PaginationItem key={v} active={v === this.props.page} onClick={() => this.props.paginate(this.props.perPage, v)}>
+                                                <PaginationLink>
+                                                    {v}
+                                                </PaginationLink>
+                                            </PaginationItem>
+                                        ))
+                                    ) : ''
                                 }
 
                                 <PaginationItem disabled={this.props.page === num.slice(-1).pop()}>

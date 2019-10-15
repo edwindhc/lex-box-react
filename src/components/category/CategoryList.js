@@ -86,17 +86,19 @@ export default class ProductDetail extends Component {
                         <ModalHeader toggle={this.toggle.bind(this)}>Lista de Categorias</ModalHeader>
                         <ModalBody className="p-0">
                             <ListGroup>
-                                {categories.map((c, key) => {
-                                    return (
-                                        <ListGroupItem key={key} className="d-flex justify-content-between">
-                                            <span>{c.name}</span>
-                                            <span>
-                                                <i className="fa fa-pencil mr-4 pointer" onClick={() => this.toggleNested(c.id)}></i>
-                                                <i className="fa fa-trash pointer" onClick={() => this.dropCategory(c.id)}></i>
-                                            </span>
-                                        </ListGroupItem>
-                                    )
-                                })}
+                                {categories.legth ? (
+                                    categories.map((c, key) => {
+                                        return (
+                                            <ListGroupItem key={key} className="d-flex justify-content-between">
+                                                <span>{c.name}</span>
+                                                <span>
+                                                    <i className="fa fa-pencil mr-4 pointer" onClick={() => this.toggleNested(c.id)}></i>
+                                                    <i className="fa fa-trash pointer" onClick={() => this.dropCategory(c.id)}></i>
+                                                </span>
+                                            </ListGroupItem>
+                                        )
+                                    })
+                                ) : ''}
 
                             </ListGroup>
                             <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested.bind(this)}>

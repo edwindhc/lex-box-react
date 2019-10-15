@@ -66,9 +66,11 @@ export default class PanelCategory extends Component {
                         <i className="fa fa-plus color-default pointer" onClick={() => this.toggle()}></i>
                     </ListGroupItem>
                     {
-                        categories.map((c, key) => {
-                            return <ListGroupItem className={`pointer ${c.selected ? 'bg-default' : ''}`} key={key} onClick={() => this.props.filterByCategory(key)}>{c.name}</ListGroupItem>
-                        })
+                        categories.lenght ? (
+                            categories.map((c, key) => {
+                                return <ListGroupItem className={`pointer ${c.selected ? 'bg-default' : ''}`} key={key} onClick={() => this.props.filterByCategory(key)}>{c.name}</ListGroupItem>
+                            })
+                        ) : ''
                     }
 
                     <Paginator
