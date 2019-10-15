@@ -86,7 +86,7 @@ export default class ProductDetail extends Component {
                         <ModalHeader toggle={this.toggle.bind(this)}>Lista de Categorias</ModalHeader>
                         <ModalBody className="p-0">
                             <ListGroup>
-                                {categories.length ? (
+                                {categories ? (
                                     categories.map((c, key) => {
                                         return (
                                             <ListGroupItem key={key} className="d-flex justify-content-between">
