@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import PanelCategory from '../layout/PanelCategory';
+import PanelCategory from '../category/PanelCategory';
 import axios from 'axios';
-import ProductList from '../layout/ProductList';
+import ProductList from '../product/ProductList';
 import CreateProduct from '../product/CreateProduct';
 import CategoryList from '../category/CategoryList'
 

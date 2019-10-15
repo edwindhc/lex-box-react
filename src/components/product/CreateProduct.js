@@ -57,15 +57,19 @@ export default class CreateProduct extends Component {
         }
     }
 
-    async componentDidMount() {
+    async getCategories() {
         const categories = await axios.get(`${process.env.REACT_APP_API_URL}/categories?perPage=0`)
         this.setState({ categories: categories.data.rows })
+    }
+
+    async componentDidMount() {
+        this.getCategories()
     }
     render() {
         const { categories } = this.state;
         return (
             <div className="add-product">
-                <Modal isOpen={this.props.toggle} toggle={() => this.props.changeToggle()} className=''>
+                <Modal isOpen={this.props.toggle} toggle={() => { this.props.changeToggle(); this.getCategories() }} className=''>
                     <ModalHeader toggle={() => this.props.changeToggle()}>Agregar Producto</ModalHeader>
                     <Form>
                         <ModalBody>
@@ -95,7 +99,7 @@ export default class CreateProduct extends Component {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="category">Categoria</Label>
-                                <Input type="select" name="category" id="category" value={this.state.category}
+                                <Input type="select" name="category" id="category" value={this.state.category} onClick={() => this.getCategories()}
                                     onChange={(e) => { this.handleChange(e) }}>
                                     <option value={0}>Seleccionar</option>
                                     {categories ? categories.map((c, key) => <option value={c.id} key={key}>{c.name}</option>

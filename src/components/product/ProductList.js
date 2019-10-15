@@ -43,7 +43,7 @@ export default class ProductList extends Component {
                                     return <div className="col-sm-4 mt-3" key={key}>
                                         <Card>
                                             <CardBody className={`pt-0 px-0 ${p.selected ? 'bg-default' : ''}`}>
-                                                <Link to={`/products/${p.id}`}><CardTitle className="py-1 bg-default text-uppercase pointer">{p.title}</CardTitle></Link>
+                                                <Link className="text-decoration-none" to={`/products/${p.id}`}><CardTitle className="py-1 bg-default text-uppercase pointer">{p.title}</CardTitle></Link>
                                                 <CardSubtitle className="text-left px-3"><span>Modelo:</span> {p.model}</CardSubtitle>
                                                 <CardSubtitle className="text-left px-3"><span>Sku:</span> {p.sku}</CardSubtitle>
                                                 <CardSubtitle className="text-left px-3"><span>Categoria:</span> {p['Category.name']}</CardSubtitle>

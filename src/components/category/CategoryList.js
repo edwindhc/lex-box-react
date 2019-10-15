@@ -23,12 +23,14 @@ export default class ProductDetail extends Component {
     }
 
     async getCategory() {
-        const categories = await axios.get(`${process.env.REACT_APP_API_URL}/categories`)
+        const categories = await axios.get(`${process.env.REACT_APP_API_URL}/categories?perPage=0`)
         this.setState({ categories: categories.data.rows, count: categories.data.count })
     }
 
     toggle() {
         this.setState({ modal: !this.state.modal })
+        this.getCategory()
+        this.props.getCategories()
     }
 
     async toggleNested(id) {
@@ -77,11 +79,11 @@ export default class ProductDetail extends Component {
         this.setState({ drop: false })
     }
     render() {
-        const { categories } = this.props;
+        const { categories } = this.state;
         return (
             <div className="container">
                 <div>
-                    <Button color="danger" className="button-default" onClick={() => this.toggle()}>Lista de Categorias</Button>
+                    <Button color="danger" className="button-default" onClick={() => { this.toggle(); this.getCategory() }}>Lista de Categorias</Button>
                     <Modal isOpen={this.state.modal} toggle={this.toggle.bind(this)} className=''>
                         <ModalHeader toggle={this.toggle.bind(this)}>Lista de Categorias</ModalHeader>
                         <ModalBody className="p-0">

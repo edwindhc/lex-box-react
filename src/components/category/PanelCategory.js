@@ -57,7 +57,6 @@ export default class PanelCategory extends Component {
     render() {
         const { count, perPage, page } = this.state;
         const { categories } = this.props
-        console.log(categories, ' categories')
         return (
             <div className="col-sm-12">
                 <ListGroup>
@@ -67,11 +66,11 @@ export default class PanelCategory extends Component {
                         <i className="fa fa-plus color-default pointer" onClick={() => this.toggle()}></i>
                     </ListGroupItem>
                     {
-                        categories.length > 0 ? (
+                        categories.length ? (
                             categories.map((c, key) => {
                                 return <ListGroupItem className={`pointer ${c.selected ? 'bg-default' : ''}`} key={key} onClick={() => this.props.filterByCategory(key)}>{c.name}</ListGroupItem>
                             })
-                        ) : 'categorias'
+                        ) : 'No existen categorias disponibles'
                     }
 
                     <Paginator

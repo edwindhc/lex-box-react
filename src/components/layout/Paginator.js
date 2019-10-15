@@ -19,7 +19,7 @@ export class Paginator extends Component {
         return (
             <div>
                 {
-                    calculatePaginateNumbers ? (
+                    calculatePaginateNumbers && this.props.totals > this.props.perPage ? (
                         <ListGroupItem>
                             <Pagination className="paginator d-flex justify-content-center" size="sm" aria-label="Page navigation example">
                                 <PaginationItem disabled={this.props.page === 1}>
