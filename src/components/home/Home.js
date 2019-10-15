@@ -41,9 +41,9 @@ class Home extends Component {
 		})
 		let products;
 		if (text) {
-			products = await axios.get(`/products?${data.join('')}&title=${text}`);
+			products = await axios.get(`${process.env.REACT_APP_API_URL}/products?${data.join('')}&title=${text}`);
 		} else {
-			products = await axios.get(`/products?${data.join('')}`);
+			products = await axios.get(`${process.env.REACT_APP_API_URL}/products?${data.join('')}`);
 		}
 		const convert = products.data.rows.map(p => {
 			p.selected = false;
@@ -79,7 +79,7 @@ class Home extends Component {
 	}
 
 	async componentDidMount() {
-		const products = await axios.get(`/products`);
+		const products = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
 		let convert;
 		if (products.data.rows) {
 			convert = products.data.rows.map(p => {
@@ -105,7 +105,7 @@ class Home extends Component {
 		this.setState({ categories })
 	}
 	async sendPDF() {
-		let pdf = await axios.post(`/products/pdf`, this.state.selected, {
+		let pdf = await axios.post(`${process.env.REACT_APP_API_URL}/products/pdf`, this.state.selected, {
 			responseType: 'blob',
 			headers: {
 				'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ class Home extends Component {
 	}
 	async getCategories(perPage = this.state.perPageCategory, page = this.state.page) {
 		this.setState({ perPageCategory: perPage, page })
-		const categories = await axios.get(`/categories?perPage=${perPage}&page=${page}`);
+		const categories = await axios.get(`${process.env.REACT_APP_API_URL}/categories?perPage=${perPage}&page=${page}`);
 		this.setState({ categories: categories.data.rows, count: categories.data.count })
 	}
 
