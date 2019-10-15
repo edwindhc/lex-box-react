@@ -80,10 +80,13 @@ class Home extends Component {
 
 	async componentDidMount() {
 		const products = await axios.get(`${process.env.API_APP}/products`);
-		const convert = products.data.rows.map(p => {
-			p.selected = false;
-			return p
-		})
+		let convert;
+		if (products.data.rows) {
+			convert = products.data.rows.map(p => {
+				p.selected = false;
+				return p
+			})
+		}
 		this.setState({ products: convert, count: products.data.count })
 
 	}
