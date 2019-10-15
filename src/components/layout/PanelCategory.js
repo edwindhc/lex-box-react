@@ -57,6 +57,7 @@ export default class PanelCategory extends Component {
     render() {
         const { count, perPage, page } = this.state;
         const { categories } = this.props
+        console.log(categories, ' categories')
         return (
             <div className="col-sm-12">
                 <ListGroup>
@@ -70,7 +71,7 @@ export default class PanelCategory extends Component {
                             categories.map((c, key) => {
                                 return <ListGroupItem className={`pointer ${c.selected ? 'bg-default' : ''}`} key={key} onClick={() => this.props.filterByCategory(key)}>{c.name}</ListGroupItem>
                             })
-                        ) : ''
+                        ) : 'categorias'
                     }
 
                     <Paginator

@@ -98,7 +98,7 @@ export default class ProductDetail extends Component {
                                             </ListGroupItem>
                                         )
                                     })
-                                ) : ''}
+                                ) : 'example'}
 
                             </ListGroup>
                             <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested.bind(this)}>
