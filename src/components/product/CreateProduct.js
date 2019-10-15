@@ -30,7 +30,7 @@ export default class CreateProduct extends Component {
             CategoryId: category
         }
         if (description) format.description = description;
-        const products = await axios.post(`/products`, format);
+        const products = await axios.post(`${process.env.REACT_APP_API_URL}/products`, format);
         if (products.status === 200) {
             this.props.getProductsByCategories();
             this.setState({ show: true, title: '', model: '', sku: '', price: '', category: '', description: '' })
@@ -58,7 +58,7 @@ export default class CreateProduct extends Component {
     }
 
     async componentDidMount() {
-        const categories = await axios.get(`/categories?perPage=0`)
+        const categories = await axios.get(`${process.env.REACT_APP_API_URL}/categories?perPage=0`)
         this.setState({ categories: categories.data.rows })
     }
     render() {

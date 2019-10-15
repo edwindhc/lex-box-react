@@ -12,7 +12,7 @@ export default class ProductList extends Component {
     }
 
     async componentDidMount() {
-        const categories = await axios.get(`/categories`);
+        const categories = await axios.get(`${process.env.REACT_APP_API_URL}/categories`);
         this.setState({ categories: categories.data })
     }
     deselectAll() {

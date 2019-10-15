@@ -27,8 +27,8 @@ class ProductDetail extends Component {
         }
     }
     async getProduct() {
-        const product = await axios.get(`/products/${this.props.match.params.id}`)
-        const categories = await axios.get(`/categories?perPage=0`)
+        const product = await axios.get(`${process.env.REACT_APP_API_URL}/products/${this.props.match.params.id}`)
+        const categories = await axios.get(`${process.env.REACT_APP_API_URL}/categories?perPage=0`)
         this.setState({
             product: product.data, categories: categories.data.rows,
             title: product.data.title, model: product.data.model, sku: product.data.sku,
@@ -49,7 +49,7 @@ class ProductDetail extends Component {
     }
     async updateProduct() {
         const { title, sku, model, category, description, price } = this.state;
-        const update = await axios.patch(`/products/${this.state.product.id}`, {
+        const update = await axios.patch(`${process.env.REACT_APP_API_URL}/products/${this.state.product.id}`, {
             title,
             model,
             sku,
@@ -67,7 +67,7 @@ class ProductDetail extends Component {
         this.setState({ drop: true })
     }
     async onConfirmDrop() {
-        const drop = await axios.delete(`/products/${this.state.product.id}`)
+        const drop = await axios.delete(`${process.env.REACT_APP_API_URL}/products/${this.state.product.id}`)
         if (drop.status === 200) {
             this.setState({ dialogTitle: "Producto Eliminado", dialogMessage: "El producto ha sido eliminado correctamente", show: true, drop: false })
             setTimeout(() => {
