@@ -38,7 +38,7 @@ export default class ProductList extends Component {
                 <div className="row">
                     <div className="col-sm-12">
                         <div className="row d-flex">
-                            {products.length ? (
+                            {products ? (
                                 products.map((p, key) => {
                                     return <div className="col-sm-4 mt-3" key={key}>
                                         <Card>
